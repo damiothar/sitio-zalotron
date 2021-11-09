@@ -1,0 +1,230 @@
+//# SIZE & POSITION ************************************************************
+$navbar__height: 8rem;
+$footer__height: 8rem;
+
+@mixin fullsize--fixed() {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+@mixin fullsize--absolute($padding: 0) {
+	position: absolute;
+	top: $padding;
+	bottom: $padding;
+	left: $padding;
+	right: $padding;
+}
+@mixin fullwidth--fixed {
+	position: fixed;
+	left: 0;
+	width: 100vw;
+	z-index: 2;
+}
+
+//# COLORS *********************************************************************
+$color__red: #b62b32;
+$color__red--dark: #882025;
+$color__red--darker: #2a090b;
+
+$color__gray: #96979a;
+$color__dark: #3d4147;
+
+@mixin gradient__red {
+	background: radial-gradient(
+		circle,
+		$color__red--dark 0%,
+		$color__red--darker 100%
+	);
+}
+
+// Bg
+@mixin bg__blur($opacity: 0.8) {
+	background-color: rgba(black, $opacity);
+	backdrop-filter: blur(3px);
+}
+
+//# FONTS **********************************************************************
+$font--primary: 'Mukta', sans-serif;
+
+$font__size: 1.7rem;
+$font__size--mobile: 2.9rem;
+
+//# TRANSITIONS ****************************************************************
+@mixin transition($props, $duration, $bezier: ease, $delay: 0s) {
+	$result: ();
+	@for $i from 1 through length($props) {
+		$prop: nth($props, $i);
+		$result: append($result, $prop);
+		$result: append($result, $duration $bezier $delay);
+
+		@if $i != length($props) {
+			$result: append(
+				$result,
+				// ! Divide properties with commas
+				unquote(
+						$string: ',',
+					)
+			);
+		}
+	}
+	transition: $result;
+}
+
+//# SCROLLBAR ******************************************************************
+// Hide Scrollbar
+@mixin hideScrollbar {
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	-ms-overflow-style: none; // IE and Edge
+	scrollbar-width: none; // Firefox
+}
+
+//# SPINER *********************************************************************
+@mixin spinner {
+	&::after {
+		width: 16px;
+		height: 16px;
+		border-radius: 50%;
+		border: 2px solid white;
+		border-top-color: transparent;
+		border-right-color: transparent;
+		animation: spin 1s infinite linear;
+		opacity: 1;
+		transition: opacity 0.25s ease;
+	}
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(359deg);
+		}
+	}
+}
+
+//# BUTTON *********************************************************************
+@mixin btn {
+	$size: 31px;
+	width: $size;
+	height: $size;
+	border-radius: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 0;
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		width: $size * 0.6;
+		height: 2px;
+		transition: transform 0.2s ease;
+	}
+}
+// CLOSE
+@mixin btn__close($color: white, $background-color: $color__red) {
+	@include btn;
+	background-color: $background-color;
+	&::before,
+	&::after {
+		background-color: $color;
+	}
+	&::before {
+		transform: translate3d(0, 0, 0) rotate(-45deg);
+	}
+	&::after {
+		transform: translate3d(0, 0, 0) rotate(45deg);
+	}
+}
+// OPEN
+@mixin btn__open($color: white, $background-color: $color__red) {
+	@include btn;
+	background-color: $background-color;
+	&::before,
+	&::after {
+		background-color: $color;
+	}
+	&::before {
+		transform: translate3d(0, 3px, 0) rotate(0);
+	}
+	&::after {
+		transform: translate3d(0, -3px, 0) rotate(0);
+	}
+}
+
+//# ICONS **********************************************************************
+// PLUS
+@mixin icon__plus($color: $color__blue--dark, $background-color: white) {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: $background-color;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@include MEDIA__DESKTOP {
+		width: 30px;
+		height: 30px;
+	}
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		background-color: $color;
+	}
+	&::before {
+		width: 10px;
+		height: 2px;
+		@include MEDIA__DESKTOP {
+			width: 12px;
+		}
+	}
+	&::after {
+		width: 2px;
+		height: 10px;
+		@include MEDIA__DESKTOP {
+			height: 12px;
+		}
+	}
+}
+// CHEVRON
+@mixin icon__chevron {
+	display: flex;
+	&::before {
+		content: '';
+		display: block;
+		width: 30%;
+		height: 30%;
+		margin: auto;
+		border: 2px solid #fff;
+		border-bottom: 0;
+		border-right: 0;
+	}
+	&.--prev:before {
+		transform: translateX(15%) rotate(-45deg);
+	}
+	&.--next:before {
+		transform: translateX(-15%) rotate(135deg);
+	}
+}
+// PLAY
+@mixin icon__play {
+	$play__size: 3rem;
+	position: relative;
+	&::before {
+		content: '';
+		position: absolute;
+		z-index: 1;
+		margin: auto;
+		border-left: $play__size solid white;
+		border-top: #{$play__size * 0.6} solid transparent;
+		border-bottom: #{$play__size * 0.6} solid transparent;
+		transform: translateX(1px);
+	}
+}

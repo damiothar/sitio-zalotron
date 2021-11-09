@@ -1,0 +1,126 @@
+//# BOX SIZING
+*,
+*::before,
+*::after {
+	box-sizing: border-box !important;
+	margin: 0;
+	padding: 0;
+}
+
+//# PREVENT USER FROM SELECT TEXT OR IMAGES
+* {
+	user-select: none;
+}
+
+//# REMOVE BLUE BOX ON TAPPING
+*,
+input,
+textarea,
+button,
+select,
+a {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+//# SCROLLBAR
+* {
+	scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+	width: 8px;
+	background-color: hsl(0, 0%, 90%);
+}
+::-webkit-scrollbar-track {
+	background-color: hsl(0, 0%, 90%);
+}
+::-webkit-scrollbar-thumb {
+	background-color: hsl(0, 0%, 60%);
+	border: 1px solid hsl(0, 0%, 80%);
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: hsl(0, 0%, 40%);
+}
+
+//# ****************************************************************************
+//# ****************************************************************************
+
+//# ELEMENTS
+html {
+	font-size: 10px;
+	@include MEDIA__MAX--WIDTH {
+		font-size: calc(10 * 100vw / #{$bp__desktop});
+	}
+	@include MEDIA__MAX--HEIGHT {
+		font-size: calc(10 * 100vh / #{$bp__height});
+	}
+	@include MEDIA__SQUARE {
+		font-size: calc(10 * 100vw / #{$bp__desktop});
+	}
+}
+body {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	color: white;
+	@include gradient__red;
+	font-size: 1.6rem;
+	font-family: $font--primary;
+	font-weight: 400;
+	line-height: 1.8;
+	@include hideScrollbar;
+
+	@include MEDIA__DESKTOP {
+		overflow: hidden;
+	}
+	@include MEDIA__MOBILE {
+		font-size: 3rem;
+		//! Hack: Force scrolling to collapse explorer bar
+		height: 10000vh;
+		overflow-x: hidden;
+	}
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+}
+a,
+button {
+	color: inherit;
+}
+button {
+	cursor: pointer;
+	background: none;
+	border: none;
+	outline: none;
+	padding: 0;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	pointer-events: none;
+}
+svg {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+input,
+textarea {
+	border: none;
+	outline: none;
+}
+textarea {
+	resize: none;
+}
+ul {
+	list-style: none;
+}
