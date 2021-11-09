@@ -7,11 +7,12 @@
 
 <script>
 import * as THREE from 'three/build/three.module.js';
-import Stats from 'three/examples/jsm/libs/stats.module.js';
 import { FlyControls } from 'three/examples/jsm/controls/FlyControls.js';
+import animation from '~/mixins/animation';
 
 export default {
 	name: 'Three',
+	mixins: [animation],
 	mounted() {
 		this.clock = new THREE.Clock();
 
@@ -84,10 +85,6 @@ export default {
 			this.controls.movementSpeed = 1500;
 			this.controls.rollSpeed = Math.PI / 6;
 
-			// STATS
-			this.stats = new Stats();
-			this.canvas.appendChild(this.stats.dom);
-
 			// LISTENERS
 			window.addEventListener('resize', this.onResize);
 		},
@@ -108,7 +105,6 @@ export default {
 		animate() {
 			requestAnimationFrame(this.animate);
 			this.render();
-			this.stats.update();
 		},
 
 		// # LISTENERS
