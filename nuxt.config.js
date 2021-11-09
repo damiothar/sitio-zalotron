@@ -38,6 +38,7 @@ export default {
 
 	// # ROUTER
 	router: {
+		base: '/sitio-zalotron/',
 		linkActiveClass: '--active',
 		linkExactActiveClass: '--exactActive',
 	},
@@ -77,7 +78,10 @@ export default {
 		},
 	},
 
+	// # BUILD
 	build: {
 		transpile: ['three'],
 	},
+
+	target: 'static',
 };
