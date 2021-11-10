@@ -15,12 +15,10 @@ export default {};
 #app {
 	@include fullsize--fixed;
 	overflow: hidden;
-
 	.page {
-		@include fullsize--fixed;
-		padding: $navbar__height 0 $footer__height;
-		display: flex;
-		flex-direction: column;
+		position: relative;
+		z-index: 5;
+		pointer-events: none;
 	}
 }
 </style>

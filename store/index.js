@@ -1,7 +1,11 @@
-import portfolio from '~/content/portfolio';
+import projects from '~/content/projects';
 
 export const state = () => {
 	return {
-		portfolio,
+		projects,
 	};
+};
+
+export const getters = {
+	getProjectById() {},
 };

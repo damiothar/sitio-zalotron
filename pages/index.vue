@@ -1,7 +1,7 @@
 <template>
 	<div class="page">
-		<div class="container">
-			<div class="column">
+		<div class="page__center">
+			<div class="intro" page="bottom">
 				<h1>Home</h1>
 				<p>
 					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
@@ -18,14 +18,23 @@
 export default {
 	head() {
 		return {
-			title: `${process.env.headTitle} | Home`,
+			title: 'Zalotron.net | Home',
 		};
 	},
 };
 </script>
 
 <style lang="scss" scoped>
-.column {
-	width: 40rem;
+.page {
+	&__center {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 50vw;
+	}
+}
+.intro {
+	@include screen;
 }
 </style>
