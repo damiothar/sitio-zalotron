@@ -2,25 +2,49 @@
 	<div class="social">
 		<ul class="social__list">
 			<li class="social__item">
-				<a class="social__link" target="_blank" :href="instagramUrl">
+				<a
+					class="social__link"
+					target="_blank"
+					:href="instagramUrl"
+					@mouseenter="onMouseenter('instagram')"
+					@mouseleave="onMouseleave"
+				>
 					<font-awesome-icon :icon="['fab', 'instagram']" />
 					Instagram
 				</a>
 			</li>
 			<li class="social__item">
-				<a class="social__link" target="_blank" :href="linkedinUrl">
+				<a
+					class="social__link"
+					target="_blank"
+					:href="linkedinUrl"
+					@mouseenter="onMouseenter('linkedin')"
+					@mouseleave="onMouseleave"
+				>
 					<font-awesome-icon :icon="['fab', 'linkedin']" />
 					LinkedIn
 				</a>
 			</li>
 			<li class="social__item">
-				<a class="social__link --twitch" target="_blank" :href="twitchUrl">
+				<a
+					class="social__link --twitch"
+					target="_blank"
+					:href="twitchUrl"
+					@mouseenter="onMouseenter('twitch')"
+					@mouseleave="onMouseleave"
+				>
 					<font-awesome-icon :icon="['fab', 'twitch']" />
 					Twich
 				</a>
 			</li>
 			<li class="social__item">
-				<a class="social__link --youtube" target="_blank" :href="youtubeUrl">
+				<a
+					class="social__link --youtube"
+					target="_blank"
+					:href="youtubeUrl"
+					@mouseenter="onMouseenter('youtube')"
+					@mouseleave="onMouseleave"
+				>
 					<font-awesome-icon :icon="['fab', 'youtube']" />
 					YouTube
 				</a>
@@ -44,6 +68,14 @@ export default {
 		},
 		youtubeUrl() {
 			return 'https://www.youtube.com/c/Zalotron';
+		},
+	},
+	methods: {
+		onMouseenter(social) {
+			this.$store.commit('SET_HOVER_SOCIAL', social);
+		},
+		onMouseleave() {
+			this.$store.commit('SET_HOVER_SOCIAL', null);
 		},
 	},
 };

@@ -7,11 +7,22 @@
 
 <script>
 import three from '~/mixins/three';
+import scene from '~/mixins/scene';
 import animation from '~/mixins/animation';
 
 export default {
 	name: 'Three',
-	mixins: [three, animation],
+	mixins: [three, scene, animation],
+	computed: {
+		hoverSocial() {
+			return this.$store.state.hoverSocial;
+		},
+	},
+	watch: {
+		hoverSocial(social) {
+			this.animateSocial(social);
+		},
+	},
 	mounted() {
 		this.setup();
 		this.init();
@@ -32,9 +43,7 @@ export default {
 			this.camera.position.z = 250;
 
 			// SCENE
-			this.scene = new this.THREE.Scene();
-			this.scene.background = new this.THREE.Color().setHSL(0, 0.9, 0.01);
-			this.scene.fog = new this.THREE.Fog(this.scene.background, 3500, 15000);
+			this.addScene();
 
 			// WORLD
 			const s = 250;

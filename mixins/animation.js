@@ -15,5 +15,8 @@ export default {
 		toRadian(degrees) {
 			return degrees * (Math.PI / 180);
 		},
+		animateSocial(social) {
+			console.log(social);
+		},
 	},
 };

@@ -1,12 +1,17 @@
 import * as THREE from '~/node_modules/three/build/three.module';
 import { OrbitControls } from '~/node_modules/three/examples/jsm/controls/OrbitControls';
+import { FBXLoader } from '~/node_modules/three/examples/jsm/loaders/FBXLoader';
 
 export default {
+	data() {
+		return {};
+	},
 	methods: {
 		// # INIT
 		setup() {
 			this.THREE = THREE;
 			this.OrbitControls = OrbitControls;
+			this.FBXLoader = FBXLoader;
 		},
 
 		// # ADD LIGHT
