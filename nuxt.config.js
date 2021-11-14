@@ -1,13 +1,4 @@
 export default {
-	env: {
-		baseURL: process.env.BASE_URL,
-		headTitle: process.env.HEAD_TITLE,
-		instagramUrl: process.env.INSTAGRAM_URL,
-		linkedinUrl: process.env.LINKEDIN_URL,
-		twitchUrl: process.env.TWITCH_URL,
-		youtubeUrl: process.env.YOUTUBE_URL,
-	},
-
 	// # GLOBAL PAGE HEADERS
 	head: {
 		meta: [
@@ -41,6 +32,13 @@ export default {
 		base: '/sitio-zalotron/',
 		linkActiveClass: '--active',
 		linkExactActiveClass: '--exactActive',
+	},
+
+	// # TRANSITION
+	pageTransition: {
+		name: 'page',
+		mode: '',
+		duration: 1000,
 	},
 
 	// # LOADING

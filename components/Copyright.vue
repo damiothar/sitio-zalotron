@@ -18,6 +18,9 @@ export default {
 
 <style lang="scss">
 .copyright {
+	position: fixed;
+	right: $page__padding;
+	bottom: $page__padding;
 	&__text {
 		font-size: 1.6rem;
 		text-align: center;
