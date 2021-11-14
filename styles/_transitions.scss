@@ -1,0 +1,40 @@
+[page] {
+	@include transition((opacity, transform), 1s);
+}
+
+//# ENTER
+.page-enter-active {
+	[page] {
+		opacity: 0;
+	}
+	[page='left'] {
+		transform: translate3d(-20rem, 0, 0);
+	}
+	[page='bottom'] {
+		transform: translate3d(0, 20rem, 0);
+	}
+}
+.page-enter-to {
+	[page] {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+//# LEAVE
+.page-leave-active {
+	[page] {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+.page-leave-to {
+	[page] {
+		opacity: 0;
+	}
+	[page='left'] {
+		transform: translate3d(-20rem, 0, 0);
+	}
+	[page='bottom'] {
+		transform: translate3d(0, 20rem, 0);
+	}
+}

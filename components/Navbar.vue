@@ -3,10 +3,14 @@
 		<div class="container">
 			<ul class="navbar__list">
 				<li class="navbar__item">
-					<NuxtLink class="navbar__link" to="/">Home</NuxtLink>
+					<NuxtLink class="navbar__link" :to="{ name: 'index' }">
+						Home
+					</NuxtLink>
 				</li>
 				<li class="navbar__item">
-					<NuxtLink class="navbar__link" to="/portfolio">Portfolio</NuxtLink>
+					<NuxtLink class="navbar__link" :to="{ name: 'projects' }">
+						Projects
+					</NuxtLink>
 				</li>
 			</ul>
 		</div>
@@ -21,13 +25,10 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-	@include fullwidth--fixed;
-	top: 0;
-	height: $navbar__height;
-
-	display: flex;
-	align-items: center;
-
+	position: fixed;
+	top: $page__padding;
+	right: $page__padding;
+	z-index: 10;
 	&__list {
 		display: flex;
 		justify-content: flex-end;

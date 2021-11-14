@@ -1,11 +1,7 @@
 <template>
 	<footer class="footer">
-		<div class="container">
-			<div class="footer__grid">
-				<Social />
-				<Copyright />
-			</div>
-		</div>
+		<Social />
+		<Copyright />
 	</footer>
 </template>
 
@@ -17,14 +13,7 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-	@include fullwidth--fixed;
-	bottom: 0;
-	height: $footer__height;
-	display: flex;
-	align-items: center;
-	&__grid {
-		display: flex;
-		justify-content: space-between;
-	}
+	position: relative;
+	z-index: 10;
 }
 </style>
