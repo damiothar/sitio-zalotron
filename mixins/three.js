@@ -1,43 +1,63 @@
-import * as THREE from '~/node_modules/three/build/three.module';
-import { OrbitControls } from '~/node_modules/three/examples/jsm/controls/OrbitControls';
-import { FBXLoader } from '~/node_modules/three/examples/jsm/loaders/FBXLoader';
+import * as THREE from 'three/build/three.module';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
+import { LightProbeGenerator } from 'three/examples/jsm/lights/LightProbeGenerator';
 
 export default {
 	data() {
 		return {};
 	},
+	computed: {
+		hoverSocial() {
+			return this.$store.state.hoverSocial;
+		},
+	},
+	watch: {
+		hoverSocial(social) {
+			this.animateSocial(social);
+		},
+	},
+	mounted() {
+		this.setup();
+		this.createWorld();
+	},
 	methods: {
 		// # INIT
 		setup() {
-			this.THREE = THREE;
-			this.OrbitControls = OrbitControls;
-			this.FBXLoader = FBXLoader;
-		},
+			this.renderer = new THREE.WebGLRenderer({
+				alpha: true,
+				antialias: true,
+			});
 
-		// # ADD LIGHT
-		addLight(h, s, l, x, y, z) {
-			const light = new this.THREE.PointLight(0xffffff, 1.5, 2000);
-			light.color.setHSL(h, s, l);
-			light.position.set(x, y, z);
-			this.scene.add(light);
-		},
+			this.scene = new THREE.Scene();
 
-		// # ANIMATE
-		render() {
-			const delta = this.clock.getDelta();
-			this.controls.update(delta);
-			this.renderer.render(this.scene, this.camera);
-		},
-		animate() {
-			requestAnimationFrame(this.animate);
-			this.render();
-		},
+			this.camera = new THREE.PerspectiveCamera(
+				75,
+				window.innerWidth / window.innerHeight,
+				0.1,
+				15000
+			);
 
-		// # LISTENERS
-		onResize() {
-			this.camera.aspect = window.innerWidth / window.innerHeight;
-			this.camera.updateProjectionMatrix();
-			this.renderer.setSize(window.innerWidth, window.innerHeight);
+			// this.mouse = THREE.Vector2();
+
+			this.lightProbe = new THREE.LightProbe();
+
+			this.loadingManager = new THREE.LoadingManager();
+
+			this.textureLoader = new THREE.TextureLoader(this.LoadingManager);
+
+			this.fbxLoader = new FBXLoader(this.LoadingManager);
+
+			this.cubeTextureLoader = new THREE.CubeTextureLoader(this.LoadingManager);
+
+			this.envMat = this.cubeTextureLoader.load(
+				this.genCubeUrls('/cubemaps/cube1/', '.jpg'),
+				(cubeTexture) => {
+					cubeTexture.encoding = THREE.sRGBEncoding;
+					this.lightProbe.copy(
+						LightProbeGenerator.fromCubeTexture(cubeTexture)
+					);
+				}
+			);
 		},
 	},
 };
