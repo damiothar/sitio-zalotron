@@ -17,7 +17,10 @@ export default {
 	},
 
 	// # PLUGINS
-	plugins: ['~/plugins/vue-youtube.client.js'],
+	plugins: [
+		'~/plugins/vue-youtube.client.js',
+		'~/plugins/vueisotope.client.js',
+	],
 
 	// # AUTO IMPORT COMPONENTS
 	components: [

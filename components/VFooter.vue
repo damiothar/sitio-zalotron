@@ -1,35 +1,20 @@
 <template>
-	<div id="app" :style="`--hue: ${hue}`">
-		<VHeader :hue="hue" />
-		<div class="page">
-			<Nuxt />
-			<VFooter />
-		</div>
-		<ColorPicker v-model="hue" />
-	</div>
+	<footer class="footer">
+		<Social />
+	</footer>
 </template>
 
 //# ****************************************************************************
 //# ****************************************************************************
 
 <script>
-export default {
-	data() {
-		return {
-			hue: '357',
-		};
-	},
-};
+export default {};
 </script>
 
 //# ****************************************************************************
 //# ****************************************************************************
 
-<style lang="scss">
-.page {
-	position: relative;
-	z-index: 2;
-	padding: 10rem 0;
-	@include glass;
+<style lang="scss" scoped>
+.footer {
 }
 </style>

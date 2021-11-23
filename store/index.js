@@ -1,7 +1,9 @@
+import categories from '~/content/categories';
 import projects from '~/content/projects';
 
 export const state = () => {
 	return {
+		categories,
 		projects,
 		hoverSocial: null,
 	};

@@ -25,18 +25,12 @@ $footer__height: 20rem;
 	z-index: 2;
 }
 
-//# COLORS *********************************************************************
-$color__red: #b62b32;
-$color__red--dark: #882025;
-$color__red--darker: #2a090b;
-$color__gray: #96979a;
-$color__dark: #3d4147;
-
+//# GRADIENTS ******************************************************************
 @mixin gradient__red {
 	background: radial-gradient(
 		circle,
-		$color__red--dark 0%,
-		$color__red--darker 100%
+		var(--color--dark) 0%,
+		var(--color--darker) 100%
 	);
 }
 
@@ -46,14 +40,11 @@ $color__dark: #3d4147;
 	backdrop-filter: blur(3px);
 }
 
-@mixin screen() {
+@mixin glass() {
 	pointer-events: all;
 	padding: 4rem;
-	border-radius: 2rem;
-	background-color: rgba(white, 0.1);
-	backdrop-filter: blur(6px);
-	box-shadow: inset 0 0 2rem rgba(white, 0.3);
-	border: 0.2rem solid rgba(white, 0.5);
+	backdrop-filter: blur(20px);
+	background-color: rgba(black, 0.5);
 }
 
 //# FONTS **********************************************************************

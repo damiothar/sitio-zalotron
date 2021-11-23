@@ -61,24 +61,15 @@ body {
 	margin: 0;
 	padding: 0;
 	width: 100vw;
-	height: 100vh;
+	overflow-x: hidden;
+
 	color: white;
 	@include gradient__red;
 	font-size: 1.6rem;
 	font-family: $font--primary;
 	font-weight: 400;
 	line-height: 1.8;
-	@include hideScrollbar;
-
-	@include MEDIA__DESKTOP {
-		overflow: hidden;
-	}
-	@include MEDIA__MOBILE {
-		font-size: 3rem;
-		//! Hack: Force scrolling to collapse explorer bar
-		height: 10000vh;
-		overflow-x: hidden;
-	}
+	// @include hideScrollbar;
 }
 h1,
 h2,

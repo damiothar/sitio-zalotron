@@ -1,3 +1,5 @@
+import { mapState } from 'vuex';
+
 import * as THREE from 'three/build/three.module';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
@@ -5,17 +7,25 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
 import { LightProbeGenerator } from 'three/examples/jsm/lights/LightProbeGenerator';
 
 export default {
+	props: {
+		hue: {
+			type: String,
+			required: true,
+		},
+	},
 	data() {
 		return {};
 	},
 	computed: {
-		hoverSocial() {
-			return this.$store.state.hoverSocial;
-		},
+		...mapState(['hoverSocial']),
 	},
 	watch: {
 		hoverSocial(social) {
 			this.animateSocial(social);
+		},
+		hue(hue) {
+			console.log('Cambia el hue: ' + hue);
+			this.matReflective.setValues({ color: this.hslToHex(hue, 62, 44) });
 		},
 	},
 	mounted() {
@@ -43,6 +53,7 @@ export default {
 			);
 
 			this.controls = new OrbitControls(this.camera, this.$refs.canvas);
+			this.controls.enableZoom = false;
 
 			this.raycaster = new THREE.Raycaster();
 
