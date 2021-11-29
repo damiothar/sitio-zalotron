@@ -7,25 +7,21 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
 import { LightProbeGenerator } from 'three/examples/jsm/lights/LightProbeGenerator';
 
 export default {
-	props: {
-		hue: {
-			type: String,
-			required: true,
-		},
-	},
 	data() {
 		return {};
 	},
 	computed: {
-		...mapState(['hoverSocial']),
+		...mapState(['color']),
 	},
 	watch: {
-		hoverSocial(social) {
-			this.animateSocial(social);
-		},
-		hue(hue) {
-			console.log('Cambia el hue: ' + hue);
-			this.matReflective.setValues({ color: this.hslToHex(hue, 62, 44) });
+		'color.hue'() {
+			this.matReflective.setValues({
+				color: this.hslToHex(
+					this.color.hue,
+					this.color.saturation,
+					this.color.lightness
+				),
+			});
 		},
 	},
 	mounted() {
