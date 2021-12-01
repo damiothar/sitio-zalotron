@@ -11,7 +11,7 @@ export default {
 			this.matWhite = new THREE.MeshStandardMaterial({ color: 0xffffff });
 
 			this.matReflective = new THREE.MeshPhysicalMaterial({
-				color: 0xff0000,
+				color: 0xffffff,
 				roughness: 0,
 				reflectivity: 1,
 				envMap: THAT.envMat,
