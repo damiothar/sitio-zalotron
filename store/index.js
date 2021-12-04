@@ -1,18 +1,35 @@
+import categories from '~/content/categories';
 import projects from '~/content/projects';
 
 export const state = () => {
 	return {
+		// # CONTENT
+		categories,
 		projects,
-		hoverSocial: null,
+
+		// # APP
+		mainVisible: false,
+		openTimeout: 500,
+		openProject: null,
+
+		// # COLOR
+		color: {
+			hue: 357,
+			saturation: 62,
+			lightness: 44,
+		},
 	};
 };
 
-export const getters = {
-	getProjectById() {},
-};
-
 export const mutations = {
-	SET_HOVER_SOCIAL(state, social) {
-		state.hoverSocial = social;
+	SET_COLOR_HUE(state, hue) {
+		state.color.hue = hue;
+	},
+	SET_MAIN_VISIBLE(state, mainVisible) {
+		state.mainVisible = mainVisible;
+		if (!mainVisible) state.openProject = null;
+	},
+	SET_OPEN_PROJECT(state, openProject) {
+		state.openProject = openProject;
 	},
 };

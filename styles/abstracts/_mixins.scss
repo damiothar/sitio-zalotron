@@ -1,15 +1,16 @@
-//# SIZE & POSITION ************************************************************
-$page__padding: 4rem;
-$navbar__height: 8rem;
-$footer__height: 20rem;
-
-@mixin fullsize--fixed() {
+//# POSITION *****************************************************************
+@mixin fullwidth--fixed {
+	position: fixed;
+	left: 0;
+	width: 100vw;
+	z-index: 2;
+}
+@mixin fullsize--fixed {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	overflow: hidden;
 }
 @mixin fullsize--absolute($padding: 0) {
 	position: absolute;
@@ -18,49 +19,38 @@ $footer__height: 20rem;
 	left: $padding;
 	right: $padding;
 }
-@mixin fullwidth--fixed {
-	position: fixed;
-	left: 0;
-	width: 100vw;
-	z-index: 2;
+
+//# SIZE ***********************************************************************
+@mixin aspectRatio--16x9 {
+	width: 100%;
+	position: relative;
+	padding-bottom: 56.25%;
+	&::v-deep {
+		img,
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
 }
 
-//# COLORS *********************************************************************
-$color__red: #b62b32;
-$color__red--dark: #882025;
-$color__red--darker: #2a090b;
-$color__gray: #96979a;
-$color__dark: #3d4147;
-
-@mixin gradient__red {
+//# BACKGROUND *****************************************************************
+@mixin background__gradient--red {
 	background: radial-gradient(
 		circle,
-		$color__red--dark 0%,
-		$color__red--darker 100%
+		var(--color--dark) 0%,
+		var(--color--darker) 100%
 	);
 }
 
-// Bg
-@mixin bg__blur($opacity: 0.8) {
-	background-color: rgba(black, $opacity);
-	backdrop-filter: blur(3px);
-}
-
-@mixin screen() {
+@mixin background__glass() {
 	pointer-events: all;
-	padding: 4rem;
-	border-radius: 2rem;
-	background-color: rgba(white, 0.1);
-	backdrop-filter: blur(6px);
-	box-shadow: inset 0 0 2rem rgba(white, 0.3);
-	border: 0.2rem solid rgba(white, 0.5);
+	backdrop-filter: blur(20px);
+	background-color: rgba(black, 0.5);
 }
-
-//# FONTS **********************************************************************
-$font--primary: 'Mukta', sans-serif;
-
-$font__size: 1.7rem;
-$font__size--mobile: 2.9rem;
 
 //# TRANSITIONS ****************************************************************
 @mixin transition($props, $duration, $bezier: ease, $delay: 0s) {
@@ -168,6 +158,7 @@ $font__size--mobile: 2.9rem;
 }
 
 //# ICONS **********************************************************************
+
 // PLUS
 @mixin icon__plus($color: $color__blue--dark, $background-color: white) {
 	width: 20px;
@@ -203,6 +194,7 @@ $font__size--mobile: 2.9rem;
 		}
 	}
 }
+
 // CHEVRON
 @mixin icon__chevron {
 	display: flex;
@@ -223,6 +215,7 @@ $font__size--mobile: 2.9rem;
 		transform: translateX(-15%) rotate(135deg);
 	}
 }
+
 // PLAY
 @mixin icon__play {
 	$play__size: 3rem;

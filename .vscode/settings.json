@@ -9,8 +9,7 @@
 	"vetur.validation.script": false,
 	"vetur.validation.style": false,
 	"workbench.colorCustomizations": {
-		"activityBar.background": "#580A3F",
-		"titleBar.activeBackground": "#7B0E58",
+		"titleBar.activeBackground": "#7e2727",
 		"titleBar.activeForeground": "#FFFCFE"
 	}
 }

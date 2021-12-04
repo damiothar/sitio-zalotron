@@ -1,6 +1,7 @@
 export default {
 	// # GLOBAL PAGE HEADERS
 	head: {
+		title: 'Zalotron.net',
 		meta: [
 			{ hid: 'utf-8', charset: 'utf-8' },
 			{
@@ -17,7 +18,10 @@ export default {
 	},
 
 	// # PLUGINS
-	plugins: ['~/plugins/vue-youtube.client.js'],
+	plugins: [
+		'~/plugins/vueisotope.client.js',
+		'~/plugins/vue-vimeo-player.client.js',
+	],
 
 	// # AUTO IMPORT COMPONENTS
 	components: [
@@ -57,21 +61,21 @@ export default {
 	],
 
 	// # GLOBAL CSS
-	css: ['normalize.css/normalize.css', '~/styles/app.scss'],
+	css: ['normalize.css/normalize.css', '~/styles/index.scss'],
 
 	// # MODULES
-	modules: ['@nuxtjs/style-resources', '@nuxtjs/fontawesome'],
+	modules: ['@nuxtjs/style-resources', '@nuxtjs/axios', '@nuxtjs/fontawesome'],
 
 	// # MODULES: STYLE RESOURCES
 	styleResources: {
-		scss: ['~/styles/_abstracts.scss', '~/styles/_responsive.scss'],
+		scss: ['~/styles/abstracts/index.scss'],
 	},
 
 	// # MODULES: FONT AWESOME
 	fontawesome: {
 		addCss: false,
 		icons: {
-			solid: ['faHome'],
+			solid: ['faBlender'],
 			brands: ['faInstagram', 'faLinkedin', 'faTwitch', 'faYoutube'],
 		},
 	},

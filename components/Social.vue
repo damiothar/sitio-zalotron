@@ -2,56 +2,35 @@
 	<div class="social">
 		<ul class="social__list">
 			<li class="social__item">
-				<a
-					class="social__link"
-					target="_blank"
-					:href="instagramUrl"
-					@mouseenter="onMouseenter('instagram')"
-					@mouseleave="onMouseleave"
-				>
+				<a class="social__link --twitch" target="_blank" :href="twitchUrl">
+					<font-awesome-icon :icon="['fab', 'twitch']" />
+					Twich
+				</a>
+			</li>
+			<!-- <li class="social__item">
+				<a class="social__link --youtube" target="_blank" :href="youtubeUrl">
+					<font-awesome-icon :icon="['fab', 'youtube']" />
+					YouTube
+				</a>
+			</li> -->
+			<li class="social__item">
+				<a class="social__link" target="_blank" :href="instagramUrl">
 					<font-awesome-icon :icon="['fab', 'instagram']" />
 					Instagram
 				</a>
 			</li>
 			<li class="social__item">
-				<a
-					class="social__link"
-					target="_blank"
-					:href="linkedinUrl"
-					@mouseenter="onMouseenter('linkedin')"
-					@mouseleave="onMouseleave"
-				>
+				<a class="social__link" target="_blank" :href="linkedinUrl">
 					<font-awesome-icon :icon="['fab', 'linkedin']" />
 					LinkedIn
-				</a>
-			</li>
-			<li class="social__item">
-				<a
-					class="social__link --twitch"
-					target="_blank"
-					:href="twitchUrl"
-					@mouseenter="onMouseenter('twitch')"
-					@mouseleave="onMouseleave"
-				>
-					<font-awesome-icon :icon="['fab', 'twitch']" />
-					Twich
-				</a>
-			</li>
-			<li class="social__item">
-				<a
-					class="social__link --youtube"
-					target="_blank"
-					:href="youtubeUrl"
-					@mouseenter="onMouseenter('youtube')"
-					@mouseleave="onMouseleave"
-				>
-					<font-awesome-icon :icon="['fab', 'youtube']" />
-					YouTube
 				</a>
 			</li>
 		</ul>
 	</div>
 </template>
+
+//# ****************************************************************************
+//# ****************************************************************************
 
 <script>
 export default {
@@ -70,33 +49,31 @@ export default {
 			return 'https://www.youtube.com/c/Zalotron';
 		},
 	},
-	methods: {
-		onMouseenter(social) {
-			this.$store.commit('SET_HOVER_SOCIAL', social);
-		},
-		onMouseleave() {
-			this.$store.commit('SET_HOVER_SOCIAL', null);
-		},
-	},
 };
 </script>
+
+//# ****************************************************************************
+//# ****************************************************************************
 
 <style lang="scss" scoped>
 .social {
 	position: fixed;
-	bottom: $page__padding;
-	left: $page__padding;
+	top: $page__padding;
+	right: $page__padding;
+	z-index: 10;
+
 	&__list {
 		list-style: none;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		margin: 0 -10px;
 	}
 	&__item {
-		margin-right: 2rem;
+		margin: 0 10px;
 	}
 	&__link {
-		--size: 2.5rem;
+		--size: 25px;
 		width: var(--size);
 		height: var(--size);
 		font-size: 0;
@@ -107,11 +84,11 @@ export default {
 		}
 
 		&.--twitch {
-			--size: 2.7rem;
-			transform: translateY(0.2rem);
+			--size: 27px;
+			transform: translateY(2px);
 		}
 		&.--youtube {
-			--size: 3.2rem;
+			--size: 32px;
 		}
 	}
 }

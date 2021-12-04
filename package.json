@@ -12,14 +12,16 @@
 	"dependencies": {
 		"@fortawesome/free-brands-svg-icons": "^5.15.4",
 		"@fortawesome/free-solid-svg-icons": "^5.15.4",
+		"@nuxtjs/axios": "^5.13.6",
 		"@nuxtjs/fontawesome": "^1.1.2",
 		"axios": "^0.24.0",
-		"core-js": "^3.15.1",
+		"core-js": "^3.19.1",
 		"lodash": "^4.17.21",
 		"normalize.css": "^8.0.1",
 		"nuxt": "^2.15.7",
 		"three": "^0.134.0",
-		"vue-youtube": "^1.4.0"
+		"vue-vimeo-player": "^0.2.2",
+		"vueisotope": "^3.1.2"
 	},
 	"devDependencies": {
 		"@babel/eslint-parser": "^7.14.7",
