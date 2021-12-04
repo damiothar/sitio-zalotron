@@ -56,22 +56,8 @@ export default {
 	watch: {
 		openProject(openProject) {
 			// # OPEN
-			if (openProject !== null) {
-				this.project = openProject;
-				this.isClickable = true;
-				setTimeout(() => {
-					this.isOpen = true;
-					if (this.isReady) this.$refs.player.play();
-				}, this.openTimeout);
-			}
-			// # CLOSE
-			else {
-				this.isOpen = false;
-				if (this.isReady) this.$refs.player.pause();
-				setTimeout(() => {
-					this.isClickable = false;
-				}, this.openTimeout);
-			}
+			if (openProject !== null) this.open(openProject);
+			else this.close();
 		},
 		'color.hue'() {
 			this.setPlayerColor();
@@ -81,6 +67,23 @@ export default {
 		this.project = this.projects[0];
 	},
 	methods: {
+		open(openProject) {
+			if (this.isOpen) return;
+			this.project = openProject;
+			this.isClickable = true;
+			setTimeout(() => {
+				this.isOpen = true;
+				if (this.isReady) this.$refs.player.play();
+			}, this.openTimeout);
+		},
+		close() {
+			if (!this.isOpen) return;
+			this.isOpen = false;
+			if (this.isReady) this.$refs.player.pause();
+			setTimeout(() => {
+				this.isClickable = false;
+			}, this.openTimeout);
+		},
 		setPlayerColor() {
 			const hex = this.hslToHex(
 				this.color.hue,
@@ -115,14 +118,14 @@ export default {
 	&__iframe {
 		@include aspectRatio--16x9;
 		opacity: 0;
-		@include transition((opacity), 0.3s);
+		@include transition((opacity), 0.5s);
 		&.--open {
 			opacity: 1;
 		}
 	}
 	&__content {
 		flex: 1;
-		padding: $page__padding;
+		padding: $page__padding - 1.5rem;
 		background-color: rgba(white, 0.15);
 		display: flex;
 		flex-direction: column;

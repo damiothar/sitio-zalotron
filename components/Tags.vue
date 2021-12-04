@@ -29,18 +29,18 @@ export default {
 
 <style lang="scss" scoped>
 .tags {
-	$height: 3.8rem;
+	$height: 3rem;
 	display: flex;
 	&__item {
 		height: $height;
-		padding: 0 1rem;
+		padding: 0 0.75rem;
 		background: var(--color);
 		color: white;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		text-align: center;
-		font-size: 2rem;
+		font-size: 1.8rem;
 		line-height: $height;
 		margin-right: 1rem;
 	}

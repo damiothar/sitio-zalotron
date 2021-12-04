@@ -9,6 +9,7 @@
 	>
 		<Logo />
 		<Social />
+		<Personal />
 
 		<header class="page__header">
 			<Three />
@@ -85,7 +86,7 @@ export default {
 
 	&__main {
 		@include fullsize--fixed;
-		z-index: 2;
+		z-index: 6;
 		padding: $page__padding;
 		@include background__glass;
 

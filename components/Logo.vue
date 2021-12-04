@@ -1,5 +1,5 @@
 <template>
-	<button class="logo" @click="SET_MAIN_VISIBLE(false)">
+	<button class="logo" @click="onClick">
 		<svg class="logo__svg" viewBox="0 0 600 390">
 			<g class="logo__group --lines">
 				<path
@@ -37,11 +37,24 @@
 //# ****************************************************************************
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 
 export default {
+	computed: {
+		...mapState(['mainVisible', 'openTimeout', 'personalVisible']),
+	},
 	methods: {
-		...mapMutations(['SET_MAIN_VISIBLE']),
+		...mapMutations(['SET_MAIN_VISIBLE', 'SET_PERSONAL_VISIBLE']),
+		onClick() {
+			if (this.mainVisible) {
+				this.SET_MAIN_VISIBLE(false);
+				setTimeout(() => {
+					this.SET_PERSONAL_VISIBLE(true);
+				}, this.openTimeout);
+			} else {
+				this.SET_PERSONAL_VISIBLE(!this.personalVisible);
+			}
+		},
 	},
 };
 </script>
@@ -52,10 +65,10 @@ export default {
 <style lang="scss" scoped>
 .logo {
 	position: fixed;
-	top: $page__padding;
+	top: $page__padding - 1rem;
 	left: $page__padding;
 	z-index: 10;
-	width: 12rem;
+	width: 8rem;
 	height: auto;
 	opacity: 0.8;
 	@include transition((opacity), 0.5s);

@@ -55,24 +55,8 @@ export default {
 	},
 	watch: {
 		openProject(openProject) {
-			// # OPEN
-			if (this.project === openProject && !this.isOpen) {
-				this.isClickable = true;
-				setTimeout(() => {
-					this.isOpen = true;
-					this.setThumb();
-				});
-			}
-			// # CLOSE
-			else if (this.isOpen) {
-				setTimeout(() => {
-					this.isOpen = false;
-					this.resetThumb();
-					setTimeout(() => {
-						this.isClickable = false;
-					}, this.openTimeout);
-				}, this.openTimeout);
-			}
+			if (this.project === openProject) this.open();
+			else this.close();
 		},
 	},
 	async created() {
@@ -80,6 +64,24 @@ export default {
 	},
 	methods: {
 		...mapMutations(['SET_OPEN_PROJECT']),
+		open() {
+			if (this.isOpen) return;
+			this.isClickable = true;
+			setTimeout(() => {
+				this.isOpen = true;
+				this.setThumb();
+			});
+		},
+		close() {
+			if (!this.isOpen) return;
+			setTimeout(() => {
+				this.isOpen = false;
+				this.resetThumb();
+				setTimeout(() => {
+					this.isClickable = false;
+				}, this.openTimeout);
+			}, this.openTimeout);
+		},
 		getThumb() {
 			this.$axios
 				.$get(`https://vimeo.com/api/v2/video/${this.project.vimeoId}.json`)

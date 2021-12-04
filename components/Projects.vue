@@ -97,24 +97,26 @@ export default {
 <style lang="scss" scoped>
 .projects {
 	position: relative;
-	margin-top: 80px;
-	padding-top: 10px;
+	margin-top: 6.2rem;
+	padding-top: 1rem;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 
 .filter {
 	display: flex;
 	justify-content: center;
-	margin-bottom: 1.5rem;
+	margin-bottom: 1rem;
 	&__item {
-		margin: 0 1rem;
+		margin: 0 0.75rem;
 	}
 }
 
 .gallery {
+	flex: 1;
 	width: $project__width * 3;
-	height: 100rem !important;
 	margin: 0 -#{$project__padding};
-
 	&__item {
 		width: $project__width;
 		padding: $project__padding;

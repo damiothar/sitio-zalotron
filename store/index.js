@@ -7,17 +7,18 @@ export const state = () => {
 		categories,
 		projects,
 
-		// # APP
-		mainVisible: false,
-		openTimeout: 500,
-		openProject: null,
-
 		// # COLOR
 		color: {
 			hue: 357,
 			saturation: 62,
 			lightness: 44,
 		},
+
+		// # APP
+		mainVisible: false,
+		openTimeout: 500,
+		openProject: null,
+		personalVisible: false,
 	};
 };
 
@@ -31,5 +32,8 @@ export const mutations = {
 	},
 	SET_OPEN_PROJECT(state, openProject) {
 		state.openProject = openProject;
+	},
+	SET_PERSONAL_VISIBLE(state, personalVisible) {
+		state.personalVisible = personalVisible;
 	},
 };

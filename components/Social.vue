@@ -67,28 +67,29 @@ export default {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin: 0 -10px;
+		margin: 0 -1rem;
 	}
 	&__item {
-		margin: 0 10px;
+		margin: 0 1rem;
 	}
 	&__link {
-		--size: 25px;
+		--size: 2.5rem;
 		width: var(--size);
 		height: var(--size);
 		font-size: 0;
 		display: block;
 		opacity: 0.75;
+		@include transition((opacity), 0.5s);
 		&:hover {
 			opacity: 1;
 		}
 
 		&.--twitch {
-			--size: 27px;
+			--size: 2.7rem;
 			transform: translateY(2px);
 		}
 		&.--youtube {
-			--size: 32px;
+			--size: 3.2rem;
 		}
 	}
 }

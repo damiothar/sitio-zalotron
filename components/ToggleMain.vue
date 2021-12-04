@@ -4,7 +4,7 @@
 		:class="{ '--mainVisible': mainVisible }"
 		@click.prevent="SET_MAIN_VISIBLE(!mainVisible)"
 	>
-		<div class="toggle__title">Portfolio</div>
+		<div class="title">Portfolio</div>
 		<div class="chevron">
 			<div
 				class="chevron__line --left"
@@ -38,21 +38,17 @@ export default {
 //# ****************************************************************************
 
 <style lang="scss" scoped>
+$padding: $page__padding - 0.3rem;
 .toggle {
 	position: absolute;
-	top: $page__padding;
+	top: $padding;
 	z-index: 10;
-	padding-bottom: 25px;
-	margin-bottom: 20px;
-	transform: translate3d(0, calc(-#{$page__padding * 2} - 100%), 0);
+	padding-bottom: 2.5rem;
+	margin-bottom: 2rem;
+	transform: translate3d(0, calc(-#{$padding * 2} - 100%), 0);
 	@include transition((transform), 1s);
 	&.--mainVisible {
 		transform: translate3d(0, 0, 0);
-	}
-	&__title {
-		font-size: 32px;
-		text-transform: uppercase;
-		line-height: 1.2;
 	}
 }
 
@@ -61,14 +57,14 @@ export default {
 	bottom: 0;
 	left: 50%;
 	transform: translateX(-50%);
-	width: 20px;
-	height: 20px;
+	width: 2rem;
+	height: 2rem;
 
 	&__line {
 		position: absolute;
 		bottom: 0;
 		width: 100%;
-		border-bottom: 3px solid white;
+		border-bottom: 2px solid white;
 		@include transition((transform), 1s);
 		&.--left {
 			right: 50%;
@@ -91,7 +87,7 @@ export default {
 
 // # ANIMATIONS
 $rotation: 45deg;
-$offsetY: 10px;
+$offsetY: 1rem;
 $scale: 3;
 
 //# LEFT

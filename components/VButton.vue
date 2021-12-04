@@ -45,12 +45,12 @@ export default {
 //# ****************************************************************************
 
 <style lang="scss" scoped>
+$height: 4rem;
 .button {
-	$height: 5.5rem;
 	position: relative;
 	&__inner {
 		height: $height;
-		padding: 0 2.5rem;
+		padding: 0 1.5rem;
 		border: 1px solid white;
 		display: flex;
 		justify-content: center;
@@ -72,14 +72,14 @@ export default {
 
 	&__label {
 		color: inherit;
-		font-size: 2.2rem;
+		font-size: 2rem;
 		text-transform: uppercase;
 		line-height: $height;
-		margin-top: 0.3rem;
+		margin-top: 0.2rem;
 	}
 
 	&__icon {
-		height: 2.6rem;
+		height: 1.75rem;
 		transform: translate3d(0, 0, 0) rotate(0deg);
 		transform-origin: center center;
 	}

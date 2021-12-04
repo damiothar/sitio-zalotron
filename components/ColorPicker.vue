@@ -34,15 +34,6 @@ export default {
 	bottom: $page__padding;
 	right: $page__padding;
 	z-index: 10;
-	width: 200px;
-
-	// display: flex;
-	// &__preview {
-	// 	width: 2rem;
-	// 	height: 2rem;
-	// 	margin-left: 1rem;
-	// 	background-color: var(--color);
-	// 	border: 1px solid white;
-	// }
+	width: 20rem;
 }
 </style>
