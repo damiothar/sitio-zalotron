@@ -121,5 +121,11 @@ export default {
 		width: $project__width;
 		padding: $project__padding;
 	}
+	&:hover .project {
+		opacity: 0.5;
+		&:hover {
+			opacity: 1;
+		}
+	}
 }
 </style>

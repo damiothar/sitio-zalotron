@@ -126,9 +126,11 @@ export default {
 .project {
 	position: relative;
 	z-index: 1;
+	@include transition((opacity), 0.5s);
 	&.--clickable,
 	&.--open {
 		z-index: 2;
+		opacity: 1 !important;
 	}
 
 	&__button {
